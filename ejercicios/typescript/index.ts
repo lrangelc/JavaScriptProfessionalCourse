@@ -43,3 +43,8 @@ console.log(`mi color favorito es ${colorFavorito}`);
 
 let colorFavorito2:Color2 = Color2.Rojo;
 console.log(`mi color favorito es ${colorFavorito2}`);
+
+
+// Any
+let comodin: any = 'Joker';
+comodin = {type:'Wildcar'}
