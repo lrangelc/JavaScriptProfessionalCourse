@@ -65,3 +65,29 @@ comodin = { type: 'Wildcar' };
 
 // Object
 let someObject: object = { type: 'Wildcar' };
+
+interface Rectangulo {
+  ancho: number;
+  alto: number;
+  color?: Color2;
+}
+
+let rect: Rectangulo = {
+  ancho: 4,
+  alto: 3,
+};
+
+
+function area(r: Rectangulo): number {
+  return r.alto * r.ancho;
+}
+
+const areaRect = area(rect);
+console.log(areaRect);
+
+rect.toString = function () {
+  return this.color ? `Un rectangulo ${this.color}` : `un rectangulo sin color`;
+};
+console.log(rect.toString());
+rect.color = Color2.Verde;
+console.log(rect.toString());
