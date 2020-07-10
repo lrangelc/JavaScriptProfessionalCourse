@@ -6,19 +6,34 @@ function add(a: number, b: number): number {
 
 const sum = add(5, 10);
 
+function createAdder(a: number): (number) => number {
+  return function (b: number) {
+    return b + a;
+  };
+}
+
+const addFour = createAdder(4);
+const fourPlus6 = addFour(6);
+
+function fullName(firstName: string, lastName: string = 'Rangel') {
+  return firstName + ' ' + lastName;
+}
+
+const luis = fullName('Luis');
+
 // Boolean
 let muted: boolean = true;
 muted = false;
 
 // Numeros
-let numerador : number = 42;
+let numerador: number = 42;
 
 // String
-let nombre : string = 'Luis';
+let nombre: string = 'Luis';
 
 // Arreglos
 let people: string[] = [];
-people = ['Luis','Reyna'];
+people = ['Luis', 'Reyna'];
 people.push('9000');
 
 let peopleAndNumbers: Array<string | number | boolean> = [];
@@ -29,22 +44,24 @@ peopleAndNumbers.push(3000);
 enum Color {
   Rojo,
   Verde,
-  Azul
+  Azul,
 }
 
 enum Color2 {
   Rojo = 'Rojo',
   Verde = 'Verde',
-  Azul = 'Azul'
+  Azul = 'Azul',
 }
 
-let colorFavorito:Color = Color.Rojo;
+let colorFavorito: Color = Color.Rojo;
 console.log(`mi color favorito es ${colorFavorito}`);
 
-let colorFavorito2:Color2 = Color2.Rojo;
+let colorFavorito2: Color2 = Color2.Rojo;
 console.log(`mi color favorito es ${colorFavorito2}`);
-
 
 // Any
 let comodin: any = 'Joker';
-comodin = {type:'Wildcar'}
+comodin = { type: 'Wildcar' };
+
+// Object
+let someObject: object = { type: 'Wildcar' };
