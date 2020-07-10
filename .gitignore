@@ -1,4 +1,4 @@
 node_modules
 assets/BigBuckBunny.mp4
 .cache
-dist/
+dist
