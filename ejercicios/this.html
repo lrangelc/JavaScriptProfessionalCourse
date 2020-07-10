@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+</head>
+
+<body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+        console.log(`this: ${this}`);
+        function whoIsThis() {
+            return this;
+        }
+
+        function whoIsThisStrict() {
+            'use strict';
+            return this;
+        }
+
+        console.log(`this on whoIsThis: ${whoIsThis()}`);
+        console.log(`this on whoIsThisStrict: ${whoIsThisStrict()}`);
+
+        const person = {
+            name: 'Luis',
+            saludar: function () {
+                console.log(`Hi I'm ${this.name}`);
+            }
+        };
+
+        person.saludar();
+
+        const accion = person.saludar;
+
+        accion();
+
+
+        function Person(name) {
+            // this.name = {}
+            this.name = name;
+        }
+
+        Person.prototype.saludar = function () {
+            console.log(`Hi I'm ${this.name}`);
+        }
+
+        const rocio = new Person('Rocio');
+
+        rocio.saludar();
+    </script>
+
+</body>
+
+</html>

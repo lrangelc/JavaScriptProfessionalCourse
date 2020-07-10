@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+        // IIFE
+        (function() {
+            let color = 'green';
+
+            function printColor() {
+                console.log(color);
+            }
+
+            printColor();
+        })();
+
+        function makeColorPrinter(color) {
+            let colorMessage = `The color is ${color}`;
+
+            return function () {
+                console.log(colorMessage);
+            }
+        }
+
+        let greenColorPrinter = makeColorPrinter('green');
+        console.log(greenColorPrinter);
+        console.log(greenColorPrinter());
+
+        function cool() {
+            let contador = 0;
+            return {
+                getContador: function() {
+                    return contador;
+                },
+                aumentar: function() {
+                    contador++;
+                },
+                mermar: function(){
+                    contador--;
+                }
+            }
+        }
+        let xx = cool();
+
+        console.log(xx.getContador());
+        xx.aumentar();
+        xx.aumentar();
+        xx.aumentar();
+        console.log(xx.getContador());
+        xx.mermar();
+        console.log(xx.getContador());
+    </script>
+</body>
+</html>

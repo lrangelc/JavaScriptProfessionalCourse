@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call - Apply - Bind</title>
+</head>
+
+<body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <u>
+        <li><button class="call-to-action">Aprender</button></li>
+        <li><button class="call-to-action">Aprender más</button></li>
+        <li><button class="call-to-action">¡Nunca pares de aprender!</button></li>
+    </u>
+
+    <script>
+        function saludar() {
+            console.log(`Hello. I'm ${this.name} ${this.apellido}`);
+        }
+
+        function caminar(metros, direccion) {
+            console.log(`${this.name} camina ${metros} metros hacia ${direccion}.`);
+        }
+
+        saludar();
+
+        var name = 'Rocio';
+        var apellido = 'Pinzon';
+        saludar();
+
+        const luis = {
+            name: 'Luis',
+            apellido: 'Rangel Castro'
+        };
+
+        saludar.call(luis);
+
+        caminar.call(luis, 400, 'norte');
+
+        caminar.apply(luis, [300, 'sur']);
+
+        const valores = [700, 'noreste'];
+        caminar.apply(luis, valores);
+
+        const daniel = {
+            name: 'Daniel', apellido: 'Sanchez'
+        };
+
+        const danielSaluda = saludar.bind(daniel);
+        danielSaluda();
+
+        const danielCamina = caminar.bind(daniel);
+        danielCamina(200, 'este');
+
+        const danielCamina2 = caminar.bind(daniel, 2000, 'sur');
+        danielCamina2();
+
+        const danielCamina3 = caminar.bind(daniel, 1000);
+        danielCamina3('oeste');
+
+
+        const buttons = document.getElementsByClassName("call-to-action");
+        // buttons.forEach(element => {
+        //     element.onclick = () => {
+        //         alert('Nunca pares de aprender');
+        //     }
+        // });
+
+        Array.prototype.forEach.call(buttons, element => {
+            element.onclick = () => alert('Nunca pares de aprender');
+        });
+    </script>
+
+</body>
+
+</html>
